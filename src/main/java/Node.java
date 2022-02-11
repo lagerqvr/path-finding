@@ -21,11 +21,19 @@ public class Node {
         return name;
     }
 
+    public String getKey() { return key; }
+
+    public ArrayList<Node> getNeighbours() { return neighbours;}
+
     // Setters
-    public String setKey(String key) {
-        return this.key;
+    public void setKey(String key) {
+        this.key = key;
     }
 
     public void addNeighbor(Node node) {
+    }
+
+    public void setName(String newName) {
+        this.name = newName;
     }
 }
