@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 
 public class Node {
 
@@ -9,11 +10,9 @@ public class Node {
     public ArrayList<Node> neighbours= new ArrayList<>();
 
     public Node(String name, double latitude, double longitude) {
-        this.key = key;
         this.name = name;
         this.latitude = latitude;
         this.longitude = longitude;
-        
     }
 
     // Getters
@@ -31,6 +30,7 @@ public class Node {
     }
 
     public void addNeighbor(Node node) {
+        neighbours.add(node);
     }
 
     public void setName(String newName) {
