@@ -1,3 +1,4 @@
+import java.util.InputMismatchException;
 import java.util.LinkedHashMap;
 import java.util.Scanner;
 
@@ -14,6 +15,8 @@ public class Main {
     public static void main(String[] args) {
 
         Scanner scan = new Scanner(System.in);
+        final String ANSI_RED = "\u001B[31m";
+        final String ANSI_RESET = "\u001B[0m";
 
         System.out.println("------------------------------------------------------------------------------------");
         System.out.println("DDRC - Drone Delivery Route Calculator (Helsinki) v1.1");
@@ -33,31 +36,39 @@ public class Main {
                     neighbours);
         }
 
-        System.out.println("\nPlease enter your start and destination!");
-        System.out.print("Start: ");
-        String start = scan.nextLine();
-        System.out.print("Destination: ");
-        String destination = scan.nextLine();
-        double distance = 0;
+        boolean correctValues = false;
 
-        if (nodes.containsKey(start) && nodes.containsKey(destination)) {
-            Node val1 = nodes.get(start);
-            Node val2 = nodes.get(destination);
-            distance = val1.calculateH(val2);
-            System.out.println("\nDistance between nodes: " + distance);
-        } else {
-            System.out.println("Please input something else!");
-        }
+        while (!correctValues) {
+
+            System.out.println("\nPlease enter your start and destination!");
+            System.out.print("Start: ");
+            try {
+            String start = scan.nextLine();
+            System.out.print("Destination: ");
+            String destination = scan.nextLine();
+            double distance = 0;
+
+            if (nodes.containsKey(start) && nodes.containsKey(destination)) {
+                Node val1 = nodes.get(start);
+                Node val2 = nodes.get(destination);
+                distance = val1.calculateH(val2);
+                System.out.println("\nDistance between locations: " + distance);
+                correctValues = true;
+            } else {
+                System.out.println(ANSI_RED + "\nPlease enter a valid starting point and destination!" + ANSI_RESET);
+            }
+        }   catch (InputMismatchException e) {
+                System.out.println("Choose a number between 1 and 3!");
+                scan.next();
+            } catch (Exception e) {
+                scan.next();
+            }
 
         /** Yet to be implemented **/
 
         /* System.out.println("Shortest routes: ");*/
-
-        /** Formatting **/
-		/*
-		System.out.println(" key   Name                                 Neighbours\n" +
-				"[gumt] Gumtäkts uni.bibliotek           -> [bole] [mejl]");  */
     }
 
+    }
 }
 
