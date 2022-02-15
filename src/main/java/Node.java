@@ -20,6 +20,14 @@ public class Node {
         return name;
     }
 
+    public double getLatitude(Node node) {
+        return node.latitude;
+    }
+
+    public double getLongitude(Node node) {
+        return node.latitude;
+    }
+
     public String getKey() { return key; }
 
     public ArrayList<Node> getNeighbours() { return neighbours;}
@@ -35,5 +43,10 @@ public class Node {
 
     public void setName(String newName) {
         this.name = newName;
+    }
+
+    public double calculateH (Node node) {
+        double distance = Utils.getDistance(node.latitude, node.longitude, latitude, longitude);
+        return distance;
     }
 }

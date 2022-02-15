@@ -19,7 +19,6 @@ public class Main {
         System.out.println("DDRC - Drone Delivery Route Calculator (Helsinki) v1.1");
         System.out.println("Copyright Oy Drone Delivery Ab, All rights reserved.\n");
 
-
         GraphData options = new GraphData();
         LinkedHashMap<String, Node> nodes = options.createGraph();
         System.out.println(" key     Name                               Neighbours");
@@ -39,8 +38,21 @@ public class Main {
         String start = scan.nextLine();
         System.out.print("Destination: ");
         String destination = scan.nextLine();
+        double distance = 0;
 
-        System.out.println("\nShortest routes: ");
+        if (nodes.containsKey(start) && nodes.containsKey(destination)) {
+            Node val1 = nodes.get(start);
+            Node val2 = nodes.get(destination);
+            distance = val1.calculateH(val2);
+            System.out.println("\nDistance between nodes: " + distance);
+        } else {
+            System.out.println("Please input something else!");
+        }
+
+        /** Yet to be implemented **/
+
+        /* System.out.println("Shortest routes: ");*/
+
         /** Formatting **/
 		/*
 		System.out.println(" key   Name                                 Neighbours\n" +
