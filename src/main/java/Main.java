@@ -52,7 +52,7 @@ public class Main {
                 Node val1 = nodes.get(start);
                 Node val2 = nodes.get(destination);
                 distance = val1.calculateH(val2);
-                System.out.println("\nDistance between locations: " + distance);
+                System.out.println("\nDistance between locations: " + Math.round(distance*100.0)/100.0 + "km");
                 correctValues = true;
             } else {
                 System.out.println(ANSI_RED + "\nPlease enter a valid starting point and destination!" + ANSI_RESET);
