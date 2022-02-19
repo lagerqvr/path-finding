@@ -1,12 +1,10 @@
 import java.util.ArrayList;
-import java.util.LinkedHashMap;
-
-import org.graalvm.compiler.nodes.StartNode;
 
 public class Node {
 
     public String name;
     public String key;
+    public Node previous;
     public double latitude;
     public double longitude;
     public double F;
@@ -58,26 +56,24 @@ public class Node {
     }
 
     public double calculateH (Node node) {
-        double distance = Utils.getDistance(node.latitude, node.longitude, latitude, longitude);
-        return distance;
+        return Utils.getDistance(node.latitude, node.longitude, latitude, longitude);
     }
 
-    public void previous (Node node) {
-
-    }
-
-    public double calculateG(String startNode) {
+    public double calculateG(Node startNode) {
         double G = 0;
-        Node current(this.node);
+        Node current = this;
 
         while (current != startNode) {
-            double dist = current + current.previous(node);
-            G = G + dist;
-            current = current.previous(node);
+            double diff = calculateH(current.previous);
+            G = G + diff;
+            current = current.previous;
         }
         return G;
     }
 
-    
-    
+    public double getF(Node node) {
+        return calculateH(node) + calculateG(node);
+    }
+
+
 }
