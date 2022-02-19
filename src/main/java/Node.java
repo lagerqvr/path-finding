@@ -11,7 +11,7 @@ public class Node {
     public double longitude;
     public double F;
     
-    public ArrayList<Node> neighbours = new ArrayList<>();
+    public static ArrayList<Node> neighbours = new ArrayList<>();
 
     public Node(String name, double latitude, double longitude) {
         this.name = name;
@@ -78,6 +78,54 @@ public class Node {
         return G;
     }
 
-    
+    static void getRoute(Node startNode, Node endNode) {
+        ArrayList<Node> candidates = new ArrayList<>();
+        ArrayList<Node> visited = new ArrayList<>();
+        Node current = startNode;
+        boolean done = false;
+
+        while (done == false) {
+            int minF = 0;
+            Object next = null;
+            while (current.neighbours) {
+                if (neighbours != visited && neighbours != candidates) {
+                    candidates.addAll(neighbours);
+                    neighbours.previous = current;
+                }
+            }
+
+            while () {
+                if () {
+                    done = true;
+                    break;
+                }
+                else () {
+                    if (minF == 0 || minF > F) {
+                        minF = F;
+                        next = 
+                        if () {
+                            candidates.previous = current;
+                        }
+                    }
+                }
+            }
+            if (done == false) {
+                current = next;
+                visited.add(current);
+                candidates.remove(current);
+            }
+        }
+        ArrayList<Node> route = new ArrayList<>();
+        current = endNode;
+
+        while (current != startNode) {
+            route.add(0, current);
+            current = current.previous;
+        }
+        return route;
+    }
+
+    //current och previous strular
+    //"loopa alla..." fattas
     
 }
