@@ -9,6 +9,7 @@ public class Node {
     public String key;
     public double latitude;
     public double longitude;
+    public double F;
     
     public ArrayList<Node> neighbours = new ArrayList<>();
 
@@ -39,6 +40,9 @@ public class Node {
         return neighbours;
     }
 
+    public double getF() {
+        return F;
+    }
 
     // Setters
     public void setKey(String key) {
@@ -67,9 +71,13 @@ public class Node {
         Node current(this.node);
 
         while (current != startNode) {
-
+            double dist = current + current.previous(node);
+            G = G + dist;
+            current = current.previous(node);
         }
+        return G;
     }
 
+    
     
 }
