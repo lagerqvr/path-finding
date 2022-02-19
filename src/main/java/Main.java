@@ -54,6 +54,10 @@ public class Main {
                 distance = val1.calculateH(val2);
                 System.out.println("\nDistance between locations: " + Math.round(distance*100.0)/100.0 + "km");
                 correctValues = true;
+
+                System.out.println("Kortaste rutten:");
+
+                
             } else {
                 System.out.println(ANSI_RED + "\nPlease enter a valid starting point and destination!" + ANSI_RESET);
             }
