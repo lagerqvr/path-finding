@@ -52,7 +52,7 @@ public class Main {
 
                     /** Formatting **/
                     System.out.println("\nShortest routes:" +
-                            "  \n1. [berg] Berghälls bibliotek");
+                            " 1. [%s] - %s \n");
 
                 /* Node val1 = nodes.get(start);
                 Node val2 = nodes.get(destination);
