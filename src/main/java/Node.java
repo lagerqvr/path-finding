@@ -8,7 +8,7 @@ public class Node {
     public double latitude;
     public double longitude;
 
-    public static ArrayList<Node> neighbours = new ArrayList<>();
+    public ArrayList<Node> neighbours = new ArrayList<>();
 
     public Node(String name, double latitude, double longitude) {
         this.name = name;
@@ -38,10 +38,6 @@ public class Node {
         neighbours.add(node);
     }
 
-    public void setName(String newName) {
-        this.name = newName;
-    }
-
     public double calculateH (Node node) {
         return Utils.getDistance(node.latitude, node.longitude, latitude, longitude);
     }
@@ -62,7 +58,6 @@ public class Node {
         double F = G + H;
         return F;
     }
-
 
     public void setPrevious(Node previous) {
         this.previous = previous;
