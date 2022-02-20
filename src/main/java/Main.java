@@ -43,13 +43,18 @@ public class Main {
             System.out.println("\nPlease enter your start and destination!");
             System.out.print("Start: ");
             try {
-            String start = scan.nextLine();
-            System.out.print("Destination: ");
-            String destination = scan.nextLine();
-            double distance = 0;
+                String start = scan.nextLine();
+                System.out.print("Destination: ");
+                String destination = scan.nextLine();
+                double distance = 0;
 
-            if (nodes.containsKey(start) && nodes.containsKey(destination)) {
-                Node val1 = nodes.get(start);
+                if (nodes.containsKey(start) && nodes.containsKey(destination)) {
+
+                    /** Formatting **/
+                    System.out.println("\nShortest routes:" +
+                            " 1. [%s] - %s \n");
+
+                /* Node val1 = nodes.get(start);
                 Node val2 = nodes.get(destination);
                 distance = val1.calculateH(val2);
                 System.out.println("\nDistance between locations: " + Math.round(distance*100.0)/100.0 + "km");
@@ -62,16 +67,18 @@ public class Main {
                 System.out.println(ANSI_RED + "\nPlease enter a valid starting point and destination!" + ANSI_RESET);
             }
         }   catch (InputMismatchException e) {
+                 System.out.println("\nDistance between locations: " + Math.round(distance*100.0)/100.0 + "km"); */
+                    correctValues = true;
+                } else {
+                    System.out.println(ANSI_RED + "\nPlease enter a valid starting point and destination!" + ANSI_RESET);
+                }
+            } catch (InputMismatchException e) {
                 System.out.println("Choose a number between 1 and 3!");
                 scan.next();
             } catch (Exception e) {
                 scan.next();
             }
-
-        /** Yet to be implemented **/
-
-        /* System.out.println("Shortest routes: ");*/
-    }
+        }
 
     }
 }
