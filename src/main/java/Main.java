@@ -50,30 +50,18 @@ public class Main {
 
                 if (nodes.containsKey(start) && nodes.containsKey(destination)) {
 
-                    /** Formatting **/
-                    System.out.println("\nShortest routes:" +
-                            " 1. [%s] - %s \n");
+                    Utils.getRoute(nodes.get(start), nodes.get(destination));
 
-                /* Node val1 = nodes.get(start);
-                Node val2 = nodes.get(destination);
-                distance = val1.calculateH(val2);
-                System.out.println("\nDistance between locations: " + Math.round(distance*100.0)/100.0 + "km");
-                correctValues = true;
+                    System.out.println("\n");
+                    /* System.out.println("\nShortest routes:" +
+                            " 1. [%s] - %s \n"); */
 
-                System.out.println("Kortaste rutten:");
-
-                
-            } else {
-                System.out.println(ANSI_RED + "\nPlease enter a valid starting point and destination!" + ANSI_RESET);
-            }
-        }   catch (InputMismatchException e) {
-                 System.out.println("\nDistance between locations: " + Math.round(distance*100.0)/100.0 + "km"); */
                     correctValues = true;
                 } else {
                     System.out.println(ANSI_RED + "\nPlease enter a valid starting point and destination!" + ANSI_RESET);
                 }
             } catch (InputMismatchException e) {
-                System.out.println("Choose a number between 1 and 3!");
+                System.out.println("");
                 scan.next();
             } catch (Exception e) {
                 scan.next();

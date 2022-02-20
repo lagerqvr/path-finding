@@ -16,7 +16,7 @@ public class GraphData {
         LinkedHashMap<String,Node> nodes = new LinkedHashMap<>();
 
         /** Temporär lista för nodernas grannar */
-        HashMap<String,String[]> neighbors = new HashMap<>();
+        HashMap<String, String[]> neighbours = new HashMap<>();
 
         //         key              name                        lat      lon
         nodes.put("gumt", new Node("Gumtäkts uni.bibliotek   ", 60.2039, 24.9638));
@@ -39,21 +39,21 @@ public class GraphData {
          * Data för nodernas grannar enligt linjerna på kartan. HashMap med ID
          * och en enkel String[]-array för grannarnas ID.
          */
-        neighbors.put("gumt", new String[]{"bole", "arca"});
-        neighbors.put("lill", new String[]{"bole", "mejl"});
-        neighbors.put("bole", new String[]{"lill", "tolo", "gumt"});
-        neighbors.put("arca", new String[]{"gumt", "diak"});
-        neighbors.put("diak", new String[]{"arca", "vall"});
-        neighbors.put("vall", new String[]{"diak", "berg"});
-        neighbors.put("mejl", new String[]{"lill", "tolo"});
-        neighbors.put("berg", new String[]{"vall", "tolo", "sorn"});
-        neighbors.put("tolo", new String[]{"bole", "mejl", "berg", "oodi", "hank"});
-        neighbors.put("sorn", new String[]{"berg"});
-        neighbors.put("oodi", new String[]{"tolo", "berg", "hank", "hels"});
-        neighbors.put("hels", new String[]{"oodi", "rich"});
-        neighbors.put("hank", new String[]{"tolo", "oodi", "bush"});
-        neighbors.put("rich", new String[]{"hels", "bush"});
-        neighbors.put("bush", new String[]{"hank", "rich"});
+        neighbours.put("gumt", new String[]{"bole", "arca"});
+        neighbours.put("lill", new String[]{"bole", "mejl"});
+        neighbours.put("bole", new String[]{"lill", "tolo", "gumt"});
+        neighbours.put("arca", new String[]{"gumt", "diak"});
+        neighbours.put("diak", new String[]{"arca", "vall"});
+        neighbours.put("vall", new String[]{"diak", "berg"});
+        neighbours.put("mejl", new String[]{"lill", "tolo"});
+        neighbours.put("berg", new String[]{"vall", "tolo", "sorn"});
+        neighbours.put("tolo", new String[]{"bole", "mejl", "berg", "oodi", "hank"});
+        neighbours.put("sorn", new String[]{"berg"});
+        neighbours.put("oodi", new String[]{"tolo", "berg", "hank", "hels"});
+        neighbours.put("hels", new String[]{"oodi", "rich"});
+        neighbours.put("hank", new String[]{"tolo", "oodi", "bush"});
+        neighbours.put("rich", new String[]{"hels", "bush"});
+        neighbours.put("bush", new String[]{"hank", "rich"});
 
 
         /**
@@ -65,8 +65,8 @@ public class GraphData {
             nodes.get(key).setKey(key);
 
             /* Iterera nodens grannar och lägg till dem till noden */
-            for (String neighbor : neighbors.get(key)) {
-                nodes.get(key).addNeighbor(nodes.get(neighbor));
+            for (String neighbour : neighbours.get(key)) {
+                nodes.get(key).addNeighbour(nodes.get(neighbour));
             }
 
         }
