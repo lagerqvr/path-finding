@@ -63,7 +63,7 @@ public class Utils {
                 String destination = scan.nextLine();
 
                 if (nodes.containsKey(start) && nodes.containsKey(destination)) {
-                    System.out.println("");
+                    System.out.println("\n");
 
                     Utils.getRoute(nodes.get(start), nodes.get(destination));
 
@@ -72,7 +72,7 @@ public class Utils {
                     System.out.println(ANSI_RED + "\nPlease enter a valid starting point and destination!" + ANSI_RESET);
                 }
             } catch (InputMismatchException e) {
-                System.out.println("");
+                System.out.println("Input type incorrect");
                 scan.next();
             } catch (Exception e) {
                 scan.next();
@@ -126,7 +126,7 @@ public class Utils {
         current = endNode;
 
         while (!(current == startNode)) {
-            route.add(current); // 0, current?
+            route.add(0, current); // 0, current?
             current = current.previous;
         }
 
