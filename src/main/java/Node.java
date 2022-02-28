@@ -42,6 +42,10 @@ public class Node {
         this.key = key;
     }
 
+    public void setPrevious(Node previous) {
+        this.previous = previous;
+    }
+
     public void addNeighbour(Node node) {
         neighbours.add(node);
     }
@@ -64,9 +68,5 @@ public class Node {
     public double getF(double G, double H) {
         double F = G + H;
         return F;
-    }
-
-    public void setPrevious(Node previous) {
-        this.previous = previous;
     }
 }
