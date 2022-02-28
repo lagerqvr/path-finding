@@ -4,7 +4,7 @@ public class Node {
 
     public String name;
     public String key;
-    public Node previous;
+    Node previous;
     public double latitude;
     public double longitude;
 
@@ -29,6 +29,14 @@ public class Node {
         return neighbours;
     }
 
+    public double getLatitude() {
+        return latitude;
+    }
+
+    public double getLongitude() {
+        return longitude;
+    }
+
     // Setters
     public void setKey(String key) {
         this.key = key;
@@ -39,16 +47,15 @@ public class Node {
     }
 
     public double calculateH (Node node) {
-        return Utils.getDistance(node.latitude, node.longitude, latitude, longitude);
+        return Utils.getDistance(latitude, longitude, node.latitude, node.longitude);
     }
 
     public double calculateG(Node startNode) {
         double G = 0;
         Node current = this;
 
-        while (current != startNode) {
-            double diff = calculateH(current.previous);
-            G = G + diff;
+        while (!(current == startNode)) {
+            G = G + Utils.getDistance(current.latitude, current.latitude, previous.getLongitude(), previous.getLatitude());
             current = current.previous;
         }
         return G;

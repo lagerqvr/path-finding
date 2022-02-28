@@ -64,7 +64,6 @@ public class Utils {
 
                 if (nodes.containsKey(start) && nodes.containsKey(destination)) {
                     System.out.println("\n");
-
                     Utils.getRoute(nodes.get(start), nodes.get(destination));
 
                     correctValues = true;
@@ -89,7 +88,6 @@ public class Utils {
         while (!done) {
             double minF = 0;
             Node next = null;
-
             for (int i = 0; i < current.getNeighbours().size(); i++) {
                 Node neighbour = current.getNeighbours().get(i);
                 if (!candidates.contains(neighbour) && !visited.contains(neighbour)) {
@@ -99,17 +97,18 @@ public class Utils {
             }
 
             for (int i = 0; i < candidates.size(); i++) {
-                if (candidates.get(i) != endNode) {
+                if (candidates.get(i) == endNode) {
                     done = true;
                     break;
                 } else {
-                    double G = candidates.get(i).calculateG(startNode); // current?
+                    double G = candidates.get(i).calculateG(startNode);
                     double H = candidates.get(i).calculateH(endNode);
                     double F = candidates.get(i).getF(H, G);
+
                     if (minF == 0 || minF > F) {
                         minF = F;
                         next = candidates.get(i);
-                        if (candidates.get(i) == current.getNeighbours().get(i)) {
+                            if (candidates.get(i) == current.getNeighbours().get(i)) {
                             candidates.get(i).setPrevious(current);
                         }
                     }
@@ -126,18 +125,21 @@ public class Utils {
         current = endNode;
 
         while (!(current == startNode)) {
-            route.add(0, current); // 0, current?
+            route.add(current);
             current = current.previous;
         }
 
         // Formatting
 
         int order = 1;
-        System.out.println("\nShortest route: \n" +
-                order + ". " + current.getName());
+        double distance = startNode.calculateH(endNode);
+        System.out.println("Distance between locations: " + Math.round(distance*100.0)/100.0 + "km" + "\n");
+
+        System.out.print("Shortest route: ");
+        System.out.print("\n" + order + ". " + current.getName());
         for (int i = route.size() - 1; i >= 0; i--) {
             order++;
-            System.out.print(order + ". " + route.get(i).getName());
+            System.out.print("\n" + order + ". " + route.get(i).getName());
 
         }
         System.out.println("\n");
